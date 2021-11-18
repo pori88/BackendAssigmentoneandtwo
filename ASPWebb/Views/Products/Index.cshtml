@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ASPWebb.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="d-flex justify-content-center">Products</h1>
+
+<p>
+    <a class="d-flex justify-content-center col-lg-6 container btn btn-dark" role="button" aria-pressed="true" asp-controller="Home" asp-action="CreateProduct">Create New</a>
+</p>
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="col container">
+            <div class="card h-100">
+                <div class="card-body">
+                    <p><small>@*@Html.DisplayFor(modelItem => item.SubCategory.Category.Name) > @Html.DisplayFor(modelItem => item.SubCategory.Name)*@</small></p>
+                    <img src=" @Html.DisplayFor(modelItem => item.ImageUrl)" class="card-img-top" alt="75\">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                    @*<p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>*@
+                    <div class="d-flex justify-content-between align-items-center card-footer">
+                        <p class="text-danger price pt-3">@Html.DisplayFor(modelItem => item.Price):-</p>
+                        <a href="/Products/details/@item.Id" class="btn btn-outline-secondary">Details<i class="fas fa-shopping-cart me-2"></i></a>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    @*<small class="text-muted"><i class="fas fa-box text-success my-2">&nbsp;&nbsp;&nbsp;Lagerstatus</i></small>*@
+                </div>
+            </div>
+        </div>
+
+
+
+           @*@Html.ActionLink("Details", "Details", new { id = item.Id })*@
+    
+    }
+</div>
